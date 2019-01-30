@@ -3,6 +3,8 @@ import '../../main.scss';
 import { fetchMovies } from '../../helpers/requests';
 import { addMovies } from '../../actions';
 import { connect } from 'react-redux';
+import { Route, NavLink } from 'react-router-dom';
+import MovieContain from '../MoviesContain/MoviesContain';
 
 class App extends Component {
 
@@ -15,8 +17,9 @@ class App extends Component {
     return (
       <div className="App">
       <header>
-        Hello
+        <NavLink to ='/favorites' className='nav'>Favorites </NavLink>
       </header>
+      <MovieContain />
       </div>
     );
   }
