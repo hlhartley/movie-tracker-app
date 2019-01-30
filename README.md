@@ -1,6 +1,6 @@
 # Movie Tracker
 
-The goal of this project was to create an application where a user can sign in/out and save their favorite movies. This was our first project using Ract Router and Redux. The movie data is from the [TMDb API](https://www.themoviedb.org/documentation/api).
+The goal of this project was to create an application where a user can sign in/out and save their favorite movies. This was our first project using React Router and Redux. The movie data is from the [TMDb API](https://www.themoviedb.org/documentation/api).
 
 ### Set-Up Frontend:
 Clone this repo  
