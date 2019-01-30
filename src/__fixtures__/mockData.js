@@ -96,3 +96,11 @@ export const mockMovies = [
         isFavorite: false
     }
 ]
+
+export const mockState = {
+    movies: mockMovies,
+    user: {
+        name: 'Heather',
+        email: 'hh@me.com'
+    },
+}
