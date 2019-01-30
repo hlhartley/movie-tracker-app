@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Route, NavLink } from 'react-router-dom';
 import MovieContain from '../MoviesContain/MoviesContain';
 
-class App extends Component {
+export class App extends Component {
 
   componentDidMount = async () => {
     const movies = await fetchMovies();
@@ -25,7 +25,7 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies))
 });
 
