@@ -24,7 +24,7 @@ export class Login extends Component {
 
         try {
             const result = await getUser(this.state)
-            console.log(result)
+            this.props.loginUser(result.data.id, result.data.name)
         } catch(error) {
             this.setState({ error: error.message })
         }
@@ -32,15 +32,21 @@ export class Login extends Component {
     }
 
     render() {
-        return(
-            <form onSubmit={this.handleSubmit}>
-                <label htmlFor='email'>E-mail</label>
-                <input name='email' value={this.state.email} id='email' onChange={this.handleChange}/>
-                <label htmlFor='password'>Password</label>
-                <input name='password' value={this.state.password} id='password' onChange={this.handleChange}/>
-                <button>Login</button>
-            </form>
-        )
+        if(!this.props.currentUser) {
+            return(
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor='email'>E-mail</label>
+                    <input name='email' value={this.state.email} id='email' onChange={this.handleChange}/>
+                    <label htmlFor='password'>Password</label>
+                    <input name='password' value={this.state.password} id='password' onChange={this.handleChange}/>
+                    <button>Login</button>
+                </form>
+            )    
+        } else {
+            return(
+                <Redirect to='/'/>
+            )
+        }
     }
 }
 
