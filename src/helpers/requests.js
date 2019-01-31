@@ -1,5 +1,4 @@
 import { apikey } from '../apikey';
-import { createCipher } from 'crypto';
 
 export const fetchMovies = async () => {
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=en-US&page=1`;
@@ -10,6 +9,7 @@ export const fetchMovies = async () => {
     return response.json();
   }
 }
+
 export const createNewUser = async (user) => {
   try {
     await fetch('http://localhost:3000/api/users/new', {
@@ -23,17 +23,20 @@ export const createNewUser = async (user) => {
     console.log(error.message, error.status)  
   }
 }
+
 export const loginUser = async (user) => {
-  try {
-    const response = await fetch('http://localhost:3000/api/users', {
-      method: 'POST',
-      body: JSON.stringify(user),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    return response
-  } catch(error) {
-    console.log(error.message, error.status)
+  const response = await fetch('http://localhost:3000/api/users', {
+    method: 'POST',
+    body: JSON.stringify(user),
+    headers: {
+    'Content-Type': 'application/json'
+    }
+  });
+
+  if (response.status >= 300) {
+    throw Error('Email and Password Do Not Match')
+  } else {
+    const result = await response.json();
+    return result;
   }
 } 
