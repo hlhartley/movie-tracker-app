@@ -16,9 +16,13 @@ class CreateAccount extends Component {
         this.setState({ [name]: value })
     }
 
+    handleSubmit = () => {
+        // check to make sure state has a name, email, and password
+    }
+
     render() {
         return(
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <label for='name'>Name</label>
                 <input name='name' value={this.state.name} id='name' onChange={this.handleChange}/>
                 <label for='email'>E-mail</label>
