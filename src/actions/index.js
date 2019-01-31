@@ -8,3 +8,8 @@ export const loginUser = (id, name) => ({
   id,
   name
 });
+
+export const updateError = (message) => ({
+  type: 'UPDATE_ERROR',
+  message
+});
