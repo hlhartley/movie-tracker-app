@@ -9,6 +9,8 @@ class CreateAccount extends Component {
             name: '',
             email: '',
             password: '',
+            error: '',
+            accountCreated: false
         }
     }
 
@@ -21,14 +23,18 @@ class CreateAccount extends Component {
         e.preventDefault();
         // check to make sure state has a name, email, and password
         let user = this.state;
-        console.log('this is the user obj:', user)
-        await createNewUser(user);
+        try {
+            await createNewUser(user);
+            this.setState({
+                name: '',
+                email: '',
+                password: '',
+                accountCreated: true
+            });
+        } catch(error) {
+            this.setState({ error: error.message })
+        }
 
-        this.setState({
-            name: '',
-            email: '',
-            password: ''
-        });
     }
 
     render() {

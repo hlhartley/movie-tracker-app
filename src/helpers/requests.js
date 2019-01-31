@@ -11,17 +11,22 @@ export const fetchMovies = async () => {
 }
 
 export const createNewUser = async (user) => {
-  try {
-    await fetch('http://localhost:3000/api/users/new', {
-      method: 'POST',
-      body: JSON.stringify(user),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-  } catch(error) {
-    console.log(error.message, error.status)  
+  
+  const response =  await fetch('http://localhost:3000/api/users/new', {
+    method: 'POST',
+    body: JSON.stringify(user),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (response.status >= 300) {
+    throw Error('Email has already been used');
+  } else {
+    const result = await response.json();
+    return result;
   }
+
 }
 
 export const loginUser = async (user) => {
