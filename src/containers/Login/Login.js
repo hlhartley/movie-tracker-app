@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { loginUser } from '../../helpers/requests';
+import { getUser } from '../../helpers/requests';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions';
 
-class Login extends Component {
+export class Login extends Component {
     constructor() {
         super();
         this.state = {
@@ -21,7 +23,7 @@ class Login extends Component {
         e.preventDefault()
 
         try {
-            const result = await loginUser(this.state)
+            const result = await getUser(this.state)
             console.log(result)
         } catch(error) {
             this.setState({ error: error.message })
@@ -42,4 +44,12 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export const mapStateToProps = (state) => ({
+    currentUser: state.currentUser
+});
+
+export const mapDispatchToProps = (dispatch) => ({
+    loginUser: (id, name) => dispatch(loginUser(id, name))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

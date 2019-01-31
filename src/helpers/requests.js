@@ -29,7 +29,7 @@ export const createNewUser = async (user) => {
 
 }
 
-export const loginUser = async (user) => {
+export const getUser = async (user) => {
   const response = await fetch('http://localhost:3000/api/users', {
     method: 'POST',
     body: JSON.stringify(user),
