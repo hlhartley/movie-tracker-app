@@ -5,6 +5,7 @@ import { addMovies } from '../../actions';
 import { connect } from 'react-redux';
 import { Route, NavLink } from 'react-router-dom';
 import MovieContain from '../MoviesContain/MoviesContain';
+import CreateAccount from '../CreateAccount/CreateAccount';
 
 export class App extends Component {
 
@@ -19,6 +20,7 @@ export class App extends Component {
       <header>
         <NavLink to ='/favorites' className='nav'>Favorites </NavLink>
       </header>
+      <Route exact path='/create-account' component={CreateAccount}/>
       <MovieContain />
       </div>
     );
