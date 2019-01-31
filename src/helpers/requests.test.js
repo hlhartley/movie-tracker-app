@@ -23,7 +23,7 @@ describe('fetchMovies', () => {
 
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       json: () => Promise.resolve(expected),
-        status: 200
+      status: 200
       }));
 
     const result = await fetchMovies();

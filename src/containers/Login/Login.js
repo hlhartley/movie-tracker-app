@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { loginUser } from '../../helpers/requests';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
     constructor() {
         super();
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            error: ''
         }
     }
 
@@ -17,8 +19,14 @@ class Login extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        const result = await loginUser(this.state)
-        console.log(result)
+
+        try {
+            const result = await loginUser(this.state)
+            console.log(result)
+        } catch(error) {
+            this.setState({ error: error.message })
+        }
+        
     }
 
     render() {
