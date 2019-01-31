@@ -3,10 +3,11 @@ import '../../main.scss';
 import { fetchMovies } from '../../helpers/requests';
 import { addMovies } from '../../actions';
 import { connect } from 'react-redux';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import MovieContain from '../MoviesContain/MoviesContain';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import Login from '../Login/Login';
+import { withRouter } from 'react-router-dom';
 
 export class App extends Component {
 
@@ -20,10 +21,17 @@ export class App extends Component {
       <div className="App">
       <header>
         <NavLink to ='/favorites' className='nav'>Favorites </NavLink>
+        <NavLink to ='/login' className='nav'>Login </NavLink>
+        <NavLink to ='/create-account' className='nav'>Create Account </NavLink>
       </header>
-      <Route exact path='/create-account' component={CreateAccount} />
-      <Route exact path='/login' component={Login} />
-      <MovieContain />
+      <Switch>
+        <Route exact path='/movies' component={MovieContain} />
+        <Route exact path='/'>
+          <Redirect to='/movies'/>
+        </Route>
+        <Route exact path='/create-account' component={CreateAccount} />
+        <Route exact path='/login' component={Login} />
+      </Switch>
       </div>
     );
   }
@@ -33,4 +41,4 @@ export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(null, mapDispatchToProps)(App));
