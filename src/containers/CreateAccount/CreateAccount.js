@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewUser } from '../../helpers/requests';
+import { updateError } from '../../actions';
 
 class CreateAccount extends Component {
     constructor() {
@@ -9,7 +10,6 @@ class CreateAccount extends Component {
             name: '',
             email: '',
             password: '',
-            error: '',
             accountCreated: false
         }
     }
@@ -22,6 +22,7 @@ class CreateAccount extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         // check to make sure state has a name, email, and password
+        this.props.updateError('');
         let user = this.state;
         try {
             await createNewUser(user);
@@ -32,9 +33,8 @@ class CreateAccount extends Component {
                 accountCreated: true
             });
         } catch(error) {
-            this.setState({ error: error.message })
+            this.props.updateError(error.message)
         }
-
     }
 
     render() {
@@ -46,10 +46,19 @@ class CreateAccount extends Component {
                 <input name='email' value={this.state.email} id='email' onChange={this.handleChange}/>
                 <label htmlFor='password'>Password</label>
                 <input name='password' value={this.state.password} id='password' onChange={this.handleChange}/>
+                { (this.props.errorStatus !== '') && <p>{this.props.errorStatus}</p>}
                 <button>Create Account</button>
             </form>
         )
     }
 }
 
-export default CreateAccount;
+const mapStateToProps = (state) => ({
+    errorStatus: state.errorStatus
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    updateError: (message) => dispatch(updateError(message))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);
