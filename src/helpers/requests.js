@@ -1,4 +1,5 @@
 import { apikey } from '../apikey';
+import { createCipher } from 'crypto';
 
 export const fetchMovies = async () => {
   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=en-US&page=1`;
@@ -10,7 +11,7 @@ export const fetchMovies = async () => {
   }
 }
 export const createNewUser = async (user) => {
-  try{
+  try {
     await fetch('http://localhost:3000/api/users/new', {
       method: 'POST',
       body: JSON.stringify(user),
@@ -21,6 +22,18 @@ export const createNewUser = async (user) => {
   } catch(error) {
     console.log(error.message, error.status)  
   }
-
-
 }
+export const loginUser = async (user) => {
+  try {
+    const response = await fetch('http://localhost:3000/api/users', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response
+  } catch(error) {
+    console.log(error.message, error.status)
+  }
+} 
