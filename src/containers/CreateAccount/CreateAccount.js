@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createNewUser } from '../../helpers/requests';
 
 class CreateAccount extends Component {
     constructor() {
@@ -16,18 +17,28 @@ class CreateAccount extends Component {
         this.setState({ [name]: value })
     }
 
-    handleSubmit = () => {
+    handleSubmit = async (e) => {
+        e.preventDefault();
         // check to make sure state has a name, email, and password
+        let user = this.state;
+        console.log('this is the user obj:', user)
+        await createNewUser(user);
+
+        this.setState({
+            name: '',
+            email: '',
+            password: ''
+        });
     }
 
     render() {
         return(
             <form onSubmit={this.handleSubmit}>
-                <label for='name'>Name</label>
+                <label htmlFor='name'>Name</label>
                 <input name='name' value={this.state.name} id='name' onChange={this.handleChange}/>
-                <label for='email'>E-mail</label>
+                <label htmlFor='email'>E-mail</label>
                 <input name='email' value={this.state.email} id='email' onChange={this.handleChange}/>
-                <label for='password'>Password</label>
+                <label htmlFor='password'>Password</label>
                 <input name='password' value={this.state.password} id='password' onChange={this.handleChange}/>
                 <button>Create Account</button>
             </form>
