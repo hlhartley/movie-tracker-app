@@ -32,10 +32,11 @@ describe('fetchMovies', () => {
 
   it('should return an error is everything is not okay', async () => {
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-      status: 404
+      status: 404,
+      statusText: 'Not found'
     }));
 
-    const expected = Error('Error fetching, code: 404');
+    const expected = Error('Error fetching: Not found');
     await expect(fetchMovies()).rejects.toEqual(expected)
   });
 });

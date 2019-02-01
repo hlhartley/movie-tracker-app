@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../main.scss';
 import { fetchMovies } from '../../helpers/requests';
-import { addMovies } from '../../actions';
+import { addMovies, updateError } from '../../actions';
 import { connect } from 'react-redux';
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import MovieContain from '../MoviesContain/MoviesContain';
@@ -12,8 +12,12 @@ import { withRouter } from 'react-router-dom';
 export class App extends Component {
 
   componentDidMount = async () => {
-    const movies = await fetchMovies();
-    this.props.addMovies(movies.results);
+    try {
+      const movies = await fetchMovies();
+      this.props.addMovies(movies.results);
+    } catch(error) {
+      this.props.updateError(error.message);
+    }
   }
 
   render() {
@@ -38,7 +42,8 @@ export class App extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  addMovies: (movies) => dispatch(addMovies(movies))
+  addMovies: (movies) => dispatch(addMovies(movies)),
+  updateError: (message) => dispatch(updateError(message)) 
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(App));
