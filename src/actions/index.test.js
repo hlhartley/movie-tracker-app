@@ -9,5 +9,13 @@ describe('actions', () => {
         }
         const result = actions.addMovies(mockMovieData)
         expect(result).toEqual(expected)
-    })
-})
+    });
+
+    it.skip('should return a type of LOGIN_USER, with an id and name', () => {
+
+    });
+
+    it.skip('should return a type of UPDATE_ERROR, with a message', () => {
+
+    });
+});

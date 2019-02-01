@@ -53,11 +53,11 @@ class CreateAccount extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
     errorStatus: state.errorStatus
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
     updateError: (message) => dispatch(updateError(message))
 });
 
