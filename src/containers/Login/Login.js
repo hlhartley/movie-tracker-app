@@ -33,21 +33,21 @@ export class Login extends Component {
 
     render() {
         let { currentUser, errorStatus } = this.props;
-        if(!currentUser) {
+        if (currentUser) {
+            return(
+                <Redirect to='/'/>
+            )
+        } else {
             return(
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='email'>E-mail</label>
                     <input name='email' value={this.state.email} id='email' onChange={this.handleChange}/>
                     <label htmlFor='password'>Password</label>
                     <input name='password' value={this.state.password} id='password' onChange={this.handleChange}/>
-                    { (errorStatus !== '') && <p>{errorStatus}</p> }
+                    { (errorStatus !== '') && <p>Email and Password do not match</p> }
                     <button>Login</button>
                 </form>
             )    
-        } else {
-            return(
-                <Redirect to='/'/>
-            )
         }
     }
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewUser } from '../../helpers/requests';
-import { updateError } from '../../actions';
+import { Redirect } from 'react-router-dom';
+import { updateError, loginUser } from '../../actions';
 
 class CreateAccount extends Component {
     constructor() {
@@ -10,7 +11,6 @@ class CreateAccount extends Component {
             name: '',
             email: '',
             password: '',
-            accountCreated: false
         }
     }
 
@@ -21,16 +21,15 @@ class CreateAccount extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        // check to make sure state has a name, email, and password
         this.props.updateError('');
         let user = this.state;
         try {
-            await createNewUser(user);
+            const newUser = await createNewUser(user);
+            this.props.loginUser(newUser.id, this.state.name)
             this.setState({
                 name: '',
                 email: '',
                 password: '',
-                accountCreated: true
             });
         } catch(error) {
             this.props.updateError(error.message)
@@ -38,27 +37,36 @@ class CreateAccount extends Component {
     }
 
     render() {
-        return(
-            <form onSubmit={this.handleSubmit}>
-                <label htmlFor='name'>Name</label>
-                <input name='name' value={this.state.name} id='name' onChange={this.handleChange}/>
-                <label htmlFor='email'>E-mail</label>
-                <input name='email' value={this.state.email} id='email' onChange={this.handleChange}/>
-                <label htmlFor='password'>Password</label>
-                <input name='password' value={this.state.password} id='password' onChange={this.handleChange}/>
-                { (this.props.errorStatus !== '') && <p>{this.props.errorStatus}</p>}
-                <button>Create Account</button>
-            </form>
-        )
+        let { currentUser, errorStatus } = this.props;
+        if (currentUser) {
+            return(
+                <Redirect to='/'/>
+            )
+        } else {
+            return(
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor='name'>Name</label>
+                    <input name='name' value={this.state.name} id='name' onChange={this.handleChange}/>
+                    <label htmlFor='email'>E-mail</label>
+                    <input name='email' value={this.state.email} id='email' onChange={this.handleChange}/>
+                    <label htmlFor='password'>Password</label>
+                    <input name='password' value={this.state.password} id='password' onChange={this.handleChange}/>
+                    { (errorStatus !== '') && <p>Email has already been used</p>}
+                    <button>Create Account</button>
+                </form>
+            )
+        }
     }
 }
 
 export const mapStateToProps = (state) => ({
+    currentUser: state.currentUser,
     errorStatus: state.errorStatus
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-    updateError: (message) => dispatch(updateError(message))
+    updateError: (message) => dispatch(updateError(message)),
+    loginUser: (id, name) => dispatch(loginUser(id, name))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);
