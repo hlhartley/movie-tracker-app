@@ -19,20 +19,25 @@ class CreateAccount extends Component {
         this.setState({ [name]: value })
     }
 
-    handleSubmit = async (e) => {
-        e.preventDefault();
-        this.props.updateError('');
-        let user = this.state;
+    handleSubmit = async () => {
+        let user = {...this.state};
+        user.email = user.email.toLowerCase();
         try {
             const newUser = await createNewUser(user);
             this.props.loginUser(newUser.id, this.state.name)
-            this.setState({
-                name: '',
-                email: '',
-                password: '',
-            });
         } catch(error) {
             this.props.updateError(error.message)
+        }
+    }
+
+    validateInput = (e) => {
+        e.preventDefault();
+        this.props.updateError('');
+        let { name, email, password } = this.state;
+        if (name === '' || email === '' || password === '') {
+            this.props.updateError('Input not successful');
+        } else {
+            this.handleSubmit();
         }
     }
 
@@ -44,14 +49,15 @@ class CreateAccount extends Component {
             )
         } else {
             return(
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.validateInput}>
                     <label htmlFor='name'>Name</label>
                     <input name='name' value={this.state.name} id='name' onChange={this.handleChange}/>
                     <label htmlFor='email'>E-mail</label>
                     <input name='email' value={this.state.email} id='email' onChange={this.handleChange}/>
                     <label htmlFor='password'>Password</label>
                     <input name='password' value={this.state.password} id='password' onChange={this.handleChange}/>
-                    { (errorStatus !== '') && <p>Email has already been used</p>}
+                    { (errorStatus !== '' && errorStatus !== 'Input not successful') && <p>Email has already been used</p>}
+                    { (errorStatus === 'Input not successful') && <p>All fields must be filled in to create an account</p>}
                     <button>Create Account</button>
                 </form>
             )
