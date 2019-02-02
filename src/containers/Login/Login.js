@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getUser } from '../../helpers/requests';
+import { getUser } from '../../helpers/getUser';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser, updateError } from '../../actions';
@@ -10,7 +10,6 @@ export class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            error: ''
         }
     }
 

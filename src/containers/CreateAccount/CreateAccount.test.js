@@ -28,6 +28,8 @@ describe('CreateAccount', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it.skip('should call dispatch when using a function from mapDispatchToProps')
+    it.skip('should call dispatch when using a function from mapDispatchToProps', () => {
+
+    });
   });
 });
