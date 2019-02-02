@@ -13,3 +13,7 @@ export const updateError = (message) => ({
   type: 'UPDATE_ERROR',
   message
 });
+
+export const logoutUser = () => ({
+  type: 'LOGOUT_USER'
+});
