@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createNewUser } from '../../helpers/requests';
 import { Redirect } from 'react-router-dom';
 import { updateError, loginUser } from '../../actions';
+import { validator } from '../../helpers/validators';
 
 class CreateAccount extends Component {
     constructor() {
@@ -33,8 +34,8 @@ class CreateAccount extends Component {
     validateInput = (e) => {
         e.preventDefault();
         this.props.updateError('');
-        let { name, email, password } = this.state;
-        if (name === '' || email === '' || password === '') {
+        const { name, email, password } = this.state;
+        if (validator('name', name) || validator('email', email) || validator('password', password)) {
             this.props.updateError('Input not successful');
         } else {
             this.handleSubmit();

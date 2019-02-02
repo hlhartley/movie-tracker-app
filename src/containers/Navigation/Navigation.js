@@ -6,10 +6,10 @@ export const Navigation = (props) => {
     let { currentUser } = props
     if (currentUser) {
         return( 
-        <header>
-            <NavLink to ='/favorites' className='nav'>Favorites </NavLink>
-            <button>Log out</button>
-        </header>
+            <header>
+                <NavLink to ='/favorites' className='nav'>Favorites </NavLink>
+                <button>Log out</button>
+            </header>
         )
     } else {
         return(
