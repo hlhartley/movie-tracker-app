@@ -9,8 +9,7 @@ export const MoviesContain = (props) => {
     )
 
     return (
-        <div>
-            <p>Movie Contain</p>
+        <div className='movies-contain'>
             {displayMovies}
         </div>
     )

@@ -24,6 +24,11 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
+      <div className='banner'>
+          MOVIE
+            <br />TRACKER
+            <img src={require('../../images/bestfilmaward.png')} className='golden-leaves' altText='golden leaves'/>
+      </div>
       <Navigation />
       <Switch>
         <Route exact path='/movies' component={MovieContain} />
