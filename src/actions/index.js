@@ -17,3 +17,8 @@ export const updateError = (message) => ({
 export const logoutUser = () => ({
   type: 'LOGOUT_USER'
 });
+
+export const showPopup = (bool) => ({
+  type: 'SHOW_POPUP',
+  showPopup: bool
+});
