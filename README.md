@@ -30,5 +30,6 @@ Run `npm test` from the root directory
 
 ### Wireframes:
 ![Wireframes]()
+![Wireframes]()
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
