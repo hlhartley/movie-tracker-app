@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { getUser } from '../../helpers/getUser';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginUser, updateError } from '../../actions';
+import { loginUser, updateError, toggleFavorite } from '../../actions';
+import { getUserFavorites } from '../../helpers/getUserFavorites';
 
 export class Login extends Component {
     constructor() {
@@ -22,12 +23,22 @@ export class Login extends Component {
         e.preventDefault()
         this.props.updateError('');        
         try {
-            const result = await getUser(this.state)
-            this.props.loginUser(result.data.id, result.data.name)
+            const user = await getUser(this.state)
+            const favs = await getUserFavorites(user.data.id)
+            this.handleFavorites(favs.data)
+            this.props.loginUser(user.data.id, user.data.name)
         } catch(error) {
             this.props.updateError(error.message);
         }
         
+    }
+
+    handleFavorites = (favorites) => {
+        if(favorites.length > 0) {
+            favorites.forEach((favorite) => {
+                this.props.toggleFavorite(favorite.movie_id)
+            })
+        }
     }
 
     render() {
@@ -58,7 +69,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
     loginUser: (id, name) => dispatch(loginUser(id, name)),
-    updateError: (message) => dispatch(updateError(message))
+    updateError: (message) => dispatch(updateError(message)),
+    toggleFavorite: (id) => dispatch(toggleFavorite(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
