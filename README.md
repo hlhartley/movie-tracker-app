@@ -30,6 +30,6 @@ Run `npm test` from the root directory
 
 ### Wireframes:
 ![Wireframes](movie-tracker-signin-login-page.png)
-![Wireframes](movie-tracker-signin-homepage.png)
+![Wireframes](movie-tracker-homepage.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
