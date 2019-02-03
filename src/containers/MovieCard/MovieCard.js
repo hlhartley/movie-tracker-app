@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { showPopup, toggleFavorite } from '../../actions';
 import { addFavorite } from '../../helpers/addFavorite';
+import { removeFavorite } from '../../helpers/removeFavorite';
 
 export class MovieCard extends Component {
     constructor() {
@@ -13,11 +14,10 @@ export class MovieCard extends Component {
     handleClick = async () => {
         let { currentUser, handleShowPopup, toggleFavorite, id, isFavorite, title, poster_path, release_date, vote_average, overview } = this.props
         if (currentUser && isFavorite) {
-            // if isFavorite === true
-            // remove from the DB
+            await removeFavorite(currentUser.id, id);
             toggleFavorite(id);
         } else if (currentUser && !isFavorite) {
-            const success = await addFavorite(id, currentUser.id, title, poster_path, release_date, vote_average, overview);
+            await addFavorite(id, currentUser.id, title, poster_path, release_date, vote_average, overview);
             toggleFavorite(id);
         } else {
             handleShowPopup(true);
