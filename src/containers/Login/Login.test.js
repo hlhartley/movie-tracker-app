@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import { updateError, loginUser } from '../../actions';
 import React from 'react';
 import { getUser } from '../../helpers/getUser';
+import { mockMovies } from '../../__fixtures__/mockData';
 
 jest.mock('../../helpers/getUser.js')
 
@@ -83,14 +84,40 @@ describe('Login', () => {
   });
 
   describe('mapStateToProps', () => {
-    it.skip('should return an object with an error status', () => {
+    it('should return an object with an error status and current user', () => {
+      const mockState = {
+        movies: mockMovies,
+        currentUser: null,
+        errorStatus: ''
+      }
+      const expected = {
+        currentUser: null,
+        errorStatus: '' 
+      }
 
+      const mappedProps = mapStateToProps(mockState);
+      expect(mappedProps).toEqual(expected);
     });
   });
 
   describe('mapStateToDispatch', () => {
-    it.skip('should call dispatch when using a function from matchDispatchToProps', () => {
+    it('should call dispatch with a loginUser action when loginUser is called', () => {
+      const mockDispatch = jest.fn();
+      const id =1;
+      const name = 'John';
+      const actionToDispatch = loginUser(id, name);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.loginUser(id, name);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
 
+    it('should call dispatch with an updateError action when updateError is called', () => {
+      const mockDispatch = jest.fn();
+      const message = 'An error happened';
+      const actionToDispatch = updateError(message);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.updateError(message);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
 })

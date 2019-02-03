@@ -99,8 +99,9 @@ export const mockMovies = [
 
 export const mockState = {
     movies: mockMovies,
-    user: {
+    currentUser: {
         name: 'Heather',
         email: 'hh@me.com'
     },
+    errorStatus: ''
 }
