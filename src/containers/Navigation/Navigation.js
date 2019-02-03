@@ -15,8 +15,8 @@ export const Navigation = (props) => {
     } else {
         return(
             <nav>
-                <NavLink to ='/login' className='nav'>Login </NavLink> 
-                <NavLink to ='/create-account' className='nav'>Create Account </NavLink> 
+                <NavLink to ='/login' className='nav'>Login</NavLink> 
+                <NavLink to ='/create-account' className='nav'>Create Account</NavLink> 
             </nav>
         )
     }

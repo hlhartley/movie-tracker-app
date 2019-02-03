@@ -3,13 +3,14 @@ import '../../main.scss';
 import { fetchMovies } from '../../helpers/requests';
 import { addMovies, updateError } from '../../actions';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import MovieContain from '../MoviesContain/MoviesContain';
 import CreateAccount from '../CreateAccount/CreateAccount';
 import Login from '../Login/Login';
 import { withRouter } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
-import { MovieInfoCard } from '../MovieInfoCard/MovieInfoCard'
+import { MovieInfoCard } from '../MovieInfoCard/MovieInfoCard';
+import Popup from '../Popup/Popup';
 
 export class App extends Component {
 
@@ -25,12 +26,16 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-      <div className='banner'>
-          MOVIE
+      <Link to='/' className='home-banner'>
+          <div className='banner'>
+            MOVIE
             <br />TRACKER
-            <img src={require('../../images/bestfilmaward.png')} className='golden-leaves' alttext='golden leaves'/>
-      </div>
+            <img src={require('../../images/bestfilmaward.png')} className='golden-leaves' alttext='golden leaves' />
+          </div>
+      </Link>
+
       <Navigation />
+      {this.props.showPopup && <Popup />}
       <Switch>
         <Route exact path='/movies' component={MovieContain} />
         <Route exact path='/'>
@@ -51,7 +56,8 @@ export class App extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  movies: state.movies
+  movies: state.movies,
+  showPopup: state.showPopup
 });
 
 export const mapDispatchToProps = (dispatch) => ({
