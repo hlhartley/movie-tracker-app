@@ -7,17 +7,17 @@ export const Navigation = (props) => {
     let { currentUser, logoutUser } = props
     if (currentUser) {
         return( 
-        <header>
+        <nav>
             <NavLink to ='/favorites' className='nav'>Favorites </NavLink>
             <button onClick={() => logoutUser()}>Log out</button>
-        </header>
+        </nav>
         )
     } else {
         return(
-            <header>
+            <nav>
                 <NavLink to ='/login' className='nav'>Login </NavLink> 
                 <NavLink to ='/create-account' className='nav'>Create Account </NavLink> 
-            </header>
+            </nav>
         )
     }
 }
