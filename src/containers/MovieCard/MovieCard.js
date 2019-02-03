@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { showPopup } from '../../actions';
+import { showPopup, toggleFavorite } from '../../actions';
+import { addFavorite } from '../../helpers/addFavorite';
 
 export class MovieCard extends Component {
     constructor() {
         super()
     }
 
-    handleClick = () => {
-        let { currentUser, handleShowPopup } = this.props
-        if (currentUser) {
-            //add to their favorites
+
+    handleClick = async () => {
+        let { currentUser, handleShowPopup, toggleFavorite, id, isFavorite, title, poster_path, release_date, vote_average, overview } = this.props
+        if (currentUser && isFavorite) {
+            // if isFavorite === true
+            // remove from the DB
+            toggleFavorite(id);
+        } else if (currentUser && !isFavorite) {
+            const success = await addFavorite(id, currentUser.id, title, poster_path, release_date, vote_average, overview);
+            toggleFavorite(id);
         } else {
             handleShowPopup(true);
         }
@@ -37,7 +44,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-    handleShowPopup: (bool) => dispatch(showPopup(bool))
+    handleShowPopup: (bool) => dispatch(showPopup(bool)),
+    toggleFavorite: (id) => dispatch(toggleFavorite(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard)
