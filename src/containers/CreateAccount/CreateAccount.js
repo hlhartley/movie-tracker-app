@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createNewUser } from '../../helpers/requests';
+import { createNewUser } from '../../helpers/createNewUser';
 import { Redirect } from 'react-router-dom';
 import { updateError, loginUser } from '../../actions';
 import { validator } from '../../helpers/validators';
 
-class CreateAccount extends Component {
+export class CreateAccount extends Component {
     constructor() {
         super();
         this.state = {
@@ -27,6 +27,7 @@ class CreateAccount extends Component {
             const newUser = await createNewUser(user);
             this.props.loginUser(newUser.id, this.state.name)
         } catch(error) {
+            console.log('heyy')
             this.props.updateError(error.message)
         }
     }
@@ -35,7 +36,7 @@ class CreateAccount extends Component {
         e.preventDefault();
         this.props.updateError('');
         const { name, email, password } = this.state;
-        if (validator('name', name) || validator('email', email) || validator('password', password)) {
+        if (!validator('name', name) || !validator('email', email) || !validator('password', password)) {
             this.props.updateError('Input not successful');
         } else {
             this.handleSubmit();
