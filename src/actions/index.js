@@ -22,3 +22,8 @@ export const showPopup = (bool) => ({
   type: 'SHOW_POPUP',
   showPopup: bool
 });
+
+export const toggleFavorite = (id) => ({
+  type: 'TOGGLE_FAVORITE',
+  id
+});
