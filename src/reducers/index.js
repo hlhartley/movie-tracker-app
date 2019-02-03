@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
   currentUser: userReducer,
   errorStatus: errorReducer,
   showPopup: popupReducer,
+  favoriteMovies: favoritesReducer,
 });
 
 export default rootReducer;
