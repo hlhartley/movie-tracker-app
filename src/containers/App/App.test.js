@@ -30,5 +30,11 @@ describe('App', () => {
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
     });
   });
+
+  describe('mapStateToProps', () => {
+    it.skip('should return a props object with movies', () => {
+
+    });
+  });
 })
 

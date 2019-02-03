@@ -9,6 +9,7 @@ import CreateAccount from '../CreateAccount/CreateAccount';
 import Login from '../Login/Login';
 import { withRouter } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
+import { MovieInfoCard } from '../MovieInfoCard/MovieInfoCard'
 
 export class App extends Component {
 
@@ -38,14 +39,24 @@ export class App extends Component {
         <Route exact path='/create-account' component={CreateAccount} />
         <Route exact path='/login' component={Login} />
       </Switch>
+        <Route path='/movies/:id' render={({ match }) => {
+          const movieToShow = this.props.movies.find(movie => movie.id === parseInt(match.params.id))
+          if (movieToShow) {
+            return <MovieInfoCard {...movieToShow} />
+          }
+        }} />
       </div>
     );
   }
 }
+
+export const mapStateToProps = (state) => ({
+  movies: state.movies
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies)),
   updateError: (message) => dispatch(updateError(message)) 
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
