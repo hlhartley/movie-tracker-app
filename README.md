@@ -29,6 +29,7 @@ Run `npm test` from the root directory
 [Tiffany Bachmann](https://github.com/trbachmann)  
 
 ### Wireframes:
-![Wireframes]()
+![Wireframes](movie-tracker-signin-login-page.png)
+![Wireframes](movie-tracker-homepage-view.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
