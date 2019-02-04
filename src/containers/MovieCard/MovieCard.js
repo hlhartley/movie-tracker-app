@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { showPopup, toggleFavorite } from '../../actions';
-import { addFavorite } from '../../helpers/addFavorite';
-import { removeFavorite } from '../../helpers/removeFavorite';
+import { showPopup, toggleFavorite, addFavorite, removeFavorite } from '../../actions';
+import { addFavoriteToDB } from '../../helpers/addFavoriteToDB';
+import { removeFavoriteFromDB } from '../../helpers/removeFavoriteFromDB';
 
 export class MovieCard extends Component {
     constructor() {
@@ -12,12 +12,14 @@ export class MovieCard extends Component {
 
 
     handleClick = async () => {
-        let { currentUser, handleShowPopup, toggleFavorite, id, isFavorite, title, poster_path, release_date, vote_average, overview } = this.props
+        let { currentUser, handleShowPopup, toggleFavorite, addFavorite, removeFavorite, id, isFavorite, title, poster_path, release_date, vote_average, overview } = this.props
         if (currentUser && isFavorite) {
-            await removeFavorite(currentUser.id, id);
+            await removeFavoriteFromDB(currentUser.id, id);
+            removeFavorite(id);
             toggleFavorite(id);
         } else if (currentUser && !isFavorite) {
-            await addFavorite(id, currentUser.id, title, poster_path, release_date, vote_average, overview);
+            await addFavoriteToDB(id, currentUser.id, title, poster_path, release_date, vote_average, overview);
+            addFavorite(id)
             toggleFavorite(id);
         } else {
             handleShowPopup(true);
@@ -45,7 +47,9 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
     handleShowPopup: (bool) => dispatch(showPopup(bool)),
-    toggleFavorite: (id) => dispatch(toggleFavorite(id))
+    toggleFavorite: (id) => dispatch(toggleFavorite(id)),
+    addFavorite: (id) => dispatch(addFavorite(id)),
+    removeFavorite: (id) => dispatch(removeFavorite(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard)
