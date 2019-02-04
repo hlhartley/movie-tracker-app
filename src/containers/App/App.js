@@ -41,6 +41,7 @@ export class App extends Component {
         <Route exact path='/'>
           <Redirect to='/movies'/>
         </Route>
+        <Route exact path='/favorites' render={() => <MovieContain showFavs={true}/>} />
         <Route exact path='/create-account' component={CreateAccount} />
         <Route exact path='/login' component={Login} />
       </Switch>
