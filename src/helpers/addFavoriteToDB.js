@@ -1,4 +1,4 @@
-export const addFavorite = async (movie_id, user_id, title, poster_path, release_date, vote_average, overview) => {
+export const addFavoriteToDB = async (movie_id, user_id, title, poster_path, release_date, vote_average, overview) => {
   const response = await fetch('http://localhost:3000/api/users/favorites/new', {
     method: 'POST',
     body: JSON.stringify({

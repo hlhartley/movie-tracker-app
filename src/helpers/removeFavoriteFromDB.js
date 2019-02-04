@@ -1,4 +1,4 @@
-export const removeFavorite = async (user_id, movie_id) => {
+export const removeFavoriteFromDB = async (user_id, movie_id) => {
   const response = await fetch(`http://localhost:3000/api/users/${user_id}/favorites/${movie_id}`, {
     method: 'DELETE',
     body: JSON.stringify({
