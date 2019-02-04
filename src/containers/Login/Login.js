@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getUser } from '../../helpers/getUser';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginUser, updateError, toggleFavorite } from '../../actions';
+import { loginUser, updateError, toggleFavorite, addFavorite } from '../../actions';
 import { getUserFavorites } from '../../helpers/getUserFavorites';
 
 export class Login extends Component {
@@ -37,6 +37,7 @@ export class Login extends Component {
         if(favorites.length > 0) {
             favorites.forEach((favorite) => {
                 this.props.toggleFavorite(favorite.movie_id)
+                this.props.addFavorite(favorite.movie_id)
             })
         }
     }
@@ -70,7 +71,8 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
     loginUser: (id, name) => dispatch(loginUser(id, name)),
     updateError: (message) => dispatch(updateError(message)),
-    toggleFavorite: (id) => dispatch(toggleFavorite(id))
+    toggleFavorite: (id) => dispatch(toggleFavorite(id)),
+    addFavorite: (id) => dispatch(addFavorite(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
