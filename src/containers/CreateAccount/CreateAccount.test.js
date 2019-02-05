@@ -3,24 +3,24 @@ import { CreateAccount, mapStateToProps, mapDispatchToProps} from './CreateAccou
 import { shallow } from 'enzyme';
 import { updateError, loginUser } from '../../actions';
 import { mockMovies } from '../../__fixtures__/mockData';
-import { createNewUser } from '../../helpers/createNewUser';
+import * as Requests from '../../helpers/requests';
 import { validator } from '../../helpers/validators';
-
-jest.mock('../../helpers/createNewUser.js');
 
 describe('CreateAccount', () => {
   describe('CreateAccount component', () => {
     let wrapper;
     const mockLoginUser = jest.fn();
     const mockUpdateError = jest.fn();
-
+    const mockReturnedUser = { id: 5 }
+    
     beforeEach(() => {
       let props = {
         currentUser: null,
         errorStatus: ''
       }
-
+      
       wrapper = shallow(<CreateAccount {...props} loginUser={mockLoginUser} updateError={mockUpdateError}/>)
+      Requests.createNewUser = jest.fn().mockImplementation(() => Promise.resolve(mockReturnedUser));
     });
 
     it('should match the snapshot', () => {
@@ -72,6 +72,18 @@ describe('CreateAccount', () => {
       expect(wrapper.state('password')).toEqual(expected)
     });
 
+    it('should call createNewUser with the correct params', async () => {
+      const mockUser = {
+        name: 'Sarah',
+        email: 'sar3@gmail.com',
+        password: 's@rat',
+      }
+      wrapper.setState(mockUser);
+      await wrapper.instance().handleSubmit();
+      expect(Requests.createNewUser).toHaveBeenCalledWith(mockUser);
+
+    });
+
     it('should handleSubmit and login user if everything is okay with createNewUser', async () => {
       const newUserName = 'Sarah'
       wrapper.setState({
@@ -84,7 +96,7 @@ describe('CreateAccount', () => {
     });
 
     it('should call updateError with an error message if everything is not okay with createNewUser', async () => {
-      createNewUser.mockImplementation(() => {
+      Requests.createNewUser = jest.fn(() => {
         throw Error('Email has already been used')
       });
 

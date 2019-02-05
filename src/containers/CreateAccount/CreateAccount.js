@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createNewUser } from '../../helpers/createNewUser';
+import { createNewUser } from '../../helpers/requests';
 import { Redirect } from 'react-router-dom';
 import { updateError, loginUser } from '../../actions';
 import { validator } from '../../helpers/validators';
