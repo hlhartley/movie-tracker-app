@@ -2,32 +2,52 @@
 
 exports[`Login Login component should match the snapshot 1`] = `
 <form
+  className="form-container"
   onSubmit={[Function]}
 >
-  <label
-    htmlFor="email"
-  >
-    E-mail
-  </label>
-  <input
-    id="email"
-    name="email"
-    onChange={[Function]}
-    value=""
+  <i
+    class="fas fa-user-circle"
   />
-  <label
-    htmlFor="password"
+  <div
+    className="email-container"
   >
-    Password
-  </label>
-  <input
-    id="password"
-    name="password"
-    onChange={[Function]}
-    value=""
-  />
-  <button>
-    Login
+    <label
+      htmlFor="email"
+    >
+      <i
+        class="far fa-envelope"
+      />
+    </label>
+    <input
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="E-mail address"
+      value=""
+    />
+  </div>
+  <div
+    className="password-container"
+  >
+    <label
+      htmlFor="password"
+    >
+      <i
+        class="fas fa-lock"
+      />
+    </label>
+    <input
+      id="password"
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      value=""
+    />
+  </div>
+  <button
+    className="login-btn"
+  >
+    LOGIN
   </button>
 </form>
 `;
