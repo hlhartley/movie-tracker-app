@@ -1,0 +1,25 @@
+.movie-info {
+    display: flex;
+    background-color: $brown;
+    border: 3px solid transparent;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    padding: 20px;
+    margin: 25px;
+    p {
+        margin-top: 10px;
+    }
+    h2 {
+        color: $gold;
+    }
+}
+
+.movie-info-poster {
+    width: 300px;
+    margin-right: 15px;
+}
+
+.released-text {
+    font-weight: bold;
+}

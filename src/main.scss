@@ -4,6 +4,9 @@
 @import './containers/App/App.scss';
 @import './containers/Login/Login.scss';
 @import './containers/CreateAccount/CreateAccount.scss';
+@import './containers/Navigation/Navigation.scss';
+@import './containers/Popup/Popup.scss';
+@import './containers/MovieInfoCard/MovieInfoCard.scss';
 
 * {
     font-family: $cairo-font;

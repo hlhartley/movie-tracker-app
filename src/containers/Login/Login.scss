@@ -22,6 +22,9 @@
     background-color: $silver;
     font-weight: 700;
     padding: 5px;
+    &:hover {
+        background-color: $darksilver;
+    }
 }
 
 input {

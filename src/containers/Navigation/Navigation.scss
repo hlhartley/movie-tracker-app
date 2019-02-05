@@ -1,0 +1,34 @@
+.user-nav,
+.guest-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    width: 100vw;
+    height: 50px;
+}
+
+a {
+    padding: 0 20px;
+    color: $gold;
+    text-decoration: none;
+}
+
+.logout-btn {
+    border-radius: 10px;
+    width: 90px;
+    border: 1px solid black;
+    background-color: $gold;
+    font-weight: 700;
+    padding: 5px;
+    margin-right: 20px;
+    &:hover {
+        background-color: $darksilver;
+    }
+}
+
+.fa-crown,
+.fa-home {
+    display: inline;
+    font-size: 16px;
+}

@@ -23,16 +23,26 @@ export class Navigation extends Component {
         let { currentUser } = this.props
         if (currentUser) {
             return( 
-            <nav>
-                <NavLink to ='/favorites' className='nav'>Favorites </NavLink>
-                <button onClick={this.handleLogout}>Log out</button>
+            <nav className='user-nav'>
+                <div className='left-side-nav'>
+                    <NavLink to='/' className='nav'><i class="fas fa-home"></i> Home </NavLink>
+                    <NavLink to='/favorites' className='nav'><i className='fas fa-crown'></i> Favorites </NavLink>
+                </div>
+                <div>
+                    <button onClick={this.handleLogout} className='logout-btn'>Log out</button>
+                </div>
             </nav>
             )
         } else {
             return(
-                <nav>
-                    <NavLink to ='/login' className='nav'>Login</NavLink> 
-                    <NavLink to ='/create-account' className='nav'>Create Account</NavLink> 
+                <nav className='guest-nav'>
+                    <div>
+                        <NavLink to='/' className='nav'><i class="fas fa-home"></i> Home </NavLink>
+                    </div>
+                    <div>
+                        <NavLink to='/login' className='nav'>Login</NavLink> 
+                        <NavLink to='/create-account' className='nav'>Create Account</NavLink> 
+                    </div>
                 </nav>
             )
         }

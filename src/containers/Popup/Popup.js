@@ -8,13 +8,16 @@ export const Popup = (props) => {
   return(
     <div className='popup'>
       <i class="far fa-times-circle" onClick={() => props.showPopup(false)}></i>
-      <p>Create a free account to save your favorite movies</p>
-      <Link to='/create-account'>
-        <button onClick={() => props.showPopup(false)}>Create Account</button>
-      </Link>
-      <Link to='/login'>
-        <button onClick={() => props.showPopup(false)}>Already a user? Login</button>
-      </Link>
+      
+      <div className='popup-message'>
+        <p>Create a free account to save your favorite movies</p>
+        <Link to='/create-account'>
+          <button onClick={() => props.showPopup(false)} className='create-account-btn'>Create Account</button>
+        </Link>
+        <Link to='/login'>
+          <button onClick={() => props.showPopup(false)} className='login-btn'>Already a user? Login</button>
+        </Link>
+      </div>
     </div>
   )
 }
