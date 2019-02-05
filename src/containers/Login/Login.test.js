@@ -27,7 +27,7 @@ describe('Login', () => {
       wrapper = shallow(<Login {...props} loginUser={mockLoginUser} updateError={mockUpdateError} toggleFavorite={mockToggleFavorite} addFavorite={mockAddFavorite}/>)
     })
 
-    it.skip('should match the snapshot', () => {
+    it('should match the snapshot', () => {
       expect(wrapper).toMatchSnapshot()
     });
 
@@ -142,6 +142,24 @@ describe('Login', () => {
       const actionToDispatch = updateError(message);
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.updateError(message);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('should call dispatch with toggleFavorite action when toggleFavorite is called', () => {
+      const mockDispatch = jest.fn();
+      const id = 3;
+      const actionToDispatch = toggleFavorite(id);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.toggleFavorite(id);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    });
+
+    it('should call dispatch with addFavorite action when addFavorite is called', () => {
+      const mockDispatch = jest.fn();
+      const id = 4;
+      const actionToDispatch = addFavorite(id);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.addFavorite(id);
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
