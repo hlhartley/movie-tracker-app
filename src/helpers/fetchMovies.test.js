@@ -1,4 +1,4 @@
-import { fetchMovies } from './requests';
+import { fetchMovies } from './fetchMovies';
 import { apikey } from '../apikey';
 import { shallow } from 'enzyme';
 import { mockMovieData } from '../__fixtures__/mockData';
