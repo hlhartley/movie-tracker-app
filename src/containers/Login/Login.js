@@ -50,13 +50,18 @@ export class Login extends Component {
             )
         } else {
             return(
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor='email'>E-mail</label>
-                    <input name='email' value={this.state.email} id='email' onChange={this.handleChange}/>
-                    <label htmlFor='password'>Password</label>
-                    <input name='password' value={this.state.password} id='password' onChange={this.handleChange}/>
+                <form onSubmit={this.handleSubmit} className='form-container'>
+                    <i className="fas fa-user-circle"></i>
+                    <div className='email-container'>
+                        <label htmlFor='email'><i className="far fa-envelope"></i></label>
+                        <input name='email' value={this.state.email} id='email' onChange={this.handleChange} placeholder='E-mail address'/>
+                    </div>
+                    <div className='password-container'>
+                        <label htmlFor='password'><i className="fas fa-lock"></i></label>
+                        <input name='password' value={this.state.password} id='password' onChange={this.handleChange} placeholder='Password'/>
+                    </div>
                     { (errorStatus !== '') && <p>Email and Password do not match</p> }
-                    <button>Login</button>
+                    <button className='login-btn'>LOGIN</button>
                 </form>
             )    
         }

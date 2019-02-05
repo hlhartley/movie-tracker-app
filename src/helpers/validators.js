@@ -1,4 +1,4 @@
-const nameRegEx = /^[a-zA-Z]+$/ 
+const nameRegEx = /^[a-zA-Z\s]+$/ 
 const emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
 const passwordRegEx = /^[a-zA-Z0-9@*#]{2,10}$/ 
 

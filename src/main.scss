@@ -2,3 +2,10 @@
 @import './containers/MoviesContain/MoviesContain.scss';
 @import './containers/MovieCard/MovieCard.scss';
 @import './containers/App/App.scss';
+@import './containers/Login/Login.scss';
+@import './containers/CreateAccount/CreateAccount.scss';
+
+* {
+    font-family: $cairo-font;
+    letter-spacing: 1px;
+}

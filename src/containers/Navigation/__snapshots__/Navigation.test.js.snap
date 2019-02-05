@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation Navigation component should match the snapshot 1`] = `
+<nav>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="nav"
+    to="/login"
+  >
+    Login
+  </NavLink>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="nav"
+    to="/create-account"
+  >
+    Create Account
+  </NavLink>
+</nav>
+`;

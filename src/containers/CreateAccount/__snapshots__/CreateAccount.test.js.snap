@@ -2,42 +2,76 @@
 
 exports[`CreateAccount CreateAccount component should match the snapshot 1`] = `
 <form
+  className="form-container"
   onSubmit={[Function]}
 >
-  <label
-    htmlFor="name"
+  <p
+    className="main-text"
   >
-    Name
-  </label>
-  <input
-    id="name"
-    name="name"
-    onChange={[Function]}
-    value=""
-  />
-  <label
-    htmlFor="email"
+    SIGN UP FOR FREE
+  </p>
+  <p
+    className="sub-text"
   >
-    E-mail
-  </label>
-  <input
-    id="email"
-    name="email"
-    onChange={[Function]}
-    value=""
-  />
-  <label
-    htmlFor="password"
+    Start tracking your favorite movies today!
+  </p>
+  <div
+    className="name-container"
   >
-    Password
-  </label>
-  <input
-    id="password"
-    name="password"
-    onChange={[Function]}
-    value=""
-  />
-  <button>
+    <label
+      htmlFor="name"
+    >
+      <i
+        class="fas fa-user"
+      />
+    </label>
+    <input
+      id="name"
+      name="name"
+      onChange={[Function]}
+      placeholder="Full name"
+      value=""
+    />
+  </div>
+  <div
+    className="email-container"
+  >
+    <label
+      htmlFor="email"
+    >
+      <i
+        class="far fa-envelope"
+      />
+    </label>
+    <input
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="E-mail address"
+      value=""
+    />
+  </div>
+  <div
+    className="password-container"
+  >
+    <label
+      htmlFor="password"
+    >
+      <i
+        class="fas fa-lock"
+      />
+    </label>
+    <input
+      id="password"
+      name="password"
+      onChange={[Function]}
+      placeholder="Password (between 5-10 characters)"
+      value=""
+    />
+  </div>
+  <button
+    className="create-account-btn"
+  >
     Create Account
   </button>
 </form>
