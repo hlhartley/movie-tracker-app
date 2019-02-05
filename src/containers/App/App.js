@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../main.scss';
-import { fetchMovies } from '../../helpers/fetchMovies';
+import { fetchMovies } from '../../helpers/requests';
 import { addMovies, updateError } from '../../actions';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
