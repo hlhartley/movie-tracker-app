@@ -55,7 +55,7 @@ export class CreateAccount extends Component {
                     <p className='sub-text'>Start tracking your favorite movies today!</p>
                     <div className='name-container'>
                         <label htmlFor='name'><i className="fas fa-user"></i></label>
-                        <input name='name' value={this.state.name} id='name' onChange={this.handleChange} placeholder='First name'/>
+                        <input name='name' value={this.state.name} id='name' onChange={this.handleChange} placeholder='Full name'/>
                     </div>    
                     <div className='email-container'>
                         <label htmlFor='email'><i className="far fa-envelope"></i></label>
