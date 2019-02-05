@@ -1,18 +1,22 @@
 import { Login, mapStateToProps, mapDispatchToProps } from './Login';
 import { shallow } from 'enzyme';
-import { updateError, loginUser } from '../../actions';
+import { updateError, loginUser, toggleFavorite, addFavorite } from '../../actions';
 import React from 'react';
 import { getUser } from '../../helpers/getUser';
 import { mockMovies } from '../../__fixtures__/mockData';
+import { getUserFavorites } from '../../helpers/getUserFavorites'
 
 jest.mock('../../helpers/getUser.js')
+jest.mock('../../helpers/getUserFavorites.js')
 
 describe('Login', () => {
   
   describe('Login component', () => {
     let wrapper;
     const mockLoginUser = jest.fn();
-    const mockUpdateError = jest.fn()
+    const mockUpdateError = jest.fn();
+    const mockToggleFavorite = jest.fn();
+    const mockAddFavorite = jest.fn();
     
     beforeEach(() => {
       let props = {
@@ -20,8 +24,7 @@ describe('Login', () => {
         errorStatus: '',
       }
 
-
-      wrapper = shallow(<Login {...props} loginUser={mockLoginUser} updateError={mockUpdateError}/>)
+      wrapper = shallow(<Login {...props} loginUser={mockLoginUser} updateError={mockUpdateError} toggleFavorite={mockToggleFavorite} addFavorite={mockAddFavorite}/>)
     })
 
     it.skip('should match the snapshot', () => {
@@ -70,16 +73,38 @@ describe('Login', () => {
       expect(mockUpdateError).toHaveBeenCalledWith('')
     });
 
+    it('should handlefavorites with correct params if everying is okay with getUserFavorites', async () => {
+      const mockEvent = {
+        preventDefault: jest.fn()
+      }
+      const expected = [{ movie_id: '123' }, { movie_id: '456' }]
+      const spy = jest.spyOn(wrapper.instance(), 'handleFavorites')
+      wrapper.instance().forceUpdate()
+      await wrapper.instance().handleSubmit(mockEvent)
+      expect(spy).toHaveBeenCalledWith(expected)
+    })
+
     it('should login user with correct params if everything is ok with getUser', async () => {
       const mockEvent = {
         preventDefault: jest.fn()
       }
-
       const expectedId = 2
       const expectedName = 'John'
     
       wrapper.find('form').simulate('submit', mockEvent)
       await expect(mockLoginUser).toHaveBeenCalledWith(expectedId, expectedName)
+    });
+
+    it('should updateError if everything is not okay with getUser', async () => {
+      const mockEvent = {
+        preventDefault: jest.fn()
+      }
+
+      getUser.mockImplementation(() => {
+        throw Error('Email and Password Do Not Match: 500')
+      })
+      await wrapper.instance().handleSubmit(mockEvent)
+      expect(mockUpdateError).toHaveBeenCalledWith('Email and Password Do Not Match: 500');
     });
   });
 

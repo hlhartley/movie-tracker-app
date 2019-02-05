@@ -30,7 +30,7 @@ export class Login extends Component {
         } catch(error) {
             this.props.updateError(error.message);
         }
-        
+  
     }
 
     handleFavorites = (favorites) => {
