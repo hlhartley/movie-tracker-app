@@ -27,7 +27,6 @@ export class CreateAccount extends Component {
             const newUser = await createNewUser(user);
             this.props.loginUser(newUser.id, this.state.name)
         } catch(error) {
-            console.log('heyy')
             this.props.updateError(error.message)
         }
     }

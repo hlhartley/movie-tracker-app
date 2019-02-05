@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateAccount CreateAccount component should match the snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="name"
+  >
+    Name
+  </label>
+  <input
+    id="name"
+    name="name"
+    onChange={[Function]}
+    value=""
+  />
+  <label
+    htmlFor="email"
+  >
+    E-mail
+  </label>
+  <input
+    id="email"
+    name="email"
+    onChange={[Function]}
+    value=""
+  />
+  <label
+    htmlFor="password"
+  >
+    Password
+  </label>
+  <input
+    id="password"
+    name="password"
+    onChange={[Function]}
+    value=""
+  />
+  <button>
+    Create Account
+  </button>
+</form>
+`;

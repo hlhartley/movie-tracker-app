@@ -23,7 +23,7 @@ describe('CreateAccount', () => {
       wrapper = shallow(<CreateAccount {...props} loginUser={mockLoginUser} updateError={mockUpdateError}/>)
     });
 
-    it.skip('should match the snapshot', () => {
+    it('should match the snapshot', () => {
       expect(wrapper).toMatchSnapshot()
     });
 
@@ -72,16 +72,24 @@ describe('CreateAccount', () => {
       expect(wrapper.state('password')).toEqual(expected)
     });
 
-    it.skip('should handleSubmit and login user if everything is okay with createNewuser', async () => {
+    it('should handleSubmit and login user if everything is okay with createNewUser', async () => {
       const newUserName = 'Sarah'
       wrapper.setState({
         name: newUserName,
         email: 'sar3@gmail.com',
         password: 's@rat',
       });
-      wrapper.instance().handleSubmit();
-      await expect(mockLoginUser).toHaveBeenCalledWith(5, 'Sarah');
+      await wrapper.instance().handleSubmit();
+      expect(mockLoginUser).toHaveBeenCalledWith(5, 'Sarah');
+    });
 
+    it('should call updateError with an error message if everything is not okay with createNewUser', async () => {
+      createNewUser.mockImplementation(() => {
+        throw Error('Email has already been used')
+      });
+
+      await wrapper.instance().handleSubmit();
+      expect(mockUpdateError).toHaveBeenCalledWith('Email has already been used');
     });
 
     it('should validateInput and if there are no issues with name email or password will call handleSubmit', () => {
@@ -104,6 +112,7 @@ describe('CreateAccount', () => {
       const mockEvent = {
         preventDefault: jest.fn()
       }
+      const expected = 'Input not successful';
 
       wrapper.setState({
         name: 'Joe',
@@ -112,7 +121,7 @@ describe('CreateAccount', () => {
       });
 
       wrapper.instance().validateInput(mockEvent);
-      expect(mockUpdateError).toHaveBeenCalled();
+      expect(mockUpdateError).toHaveBeenCalledWith(expected);
     });
   });
 
