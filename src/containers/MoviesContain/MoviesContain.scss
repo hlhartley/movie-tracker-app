@@ -4,3 +4,21 @@
   align-content: center;
   flex-wrap: wrap;
 }
+
+.start-adding-favs-prompt {
+  background-color: $brown;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  width: 80vh;
+  text-align: center;
+  padding: 20px;
+  margin: 60px;
+  
+  .fa-crown {
+    display: inline;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
