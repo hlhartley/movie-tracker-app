@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { getUser } from '../../helpers/getUser';
+import { getUser } from '../../helpers/requests';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser, updateError, toggleFavorite, addFavorite } from '../../actions';
-import { getUserFavorites } from '../../helpers/getUserFavorites';
+import { getUserFavorites } from '../../helpers/requests';
 
 export class Login extends Component {
     constructor() {
