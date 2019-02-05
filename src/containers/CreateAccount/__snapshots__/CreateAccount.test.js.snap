@@ -22,7 +22,7 @@ exports[`CreateAccount CreateAccount component should match the snapshot 1`] = `
       htmlFor="name"
     >
       <i
-        class="fas fa-user"
+        className="fas fa-user"
       />
     </label>
     <input
@@ -40,7 +40,7 @@ exports[`CreateAccount CreateAccount component should match the snapshot 1`] = `
       htmlFor="email"
     >
       <i
-        class="far fa-envelope"
+        className="far fa-envelope"
       />
     </label>
     <input
@@ -58,7 +58,7 @@ exports[`CreateAccount CreateAccount component should match the snapshot 1`] = `
       htmlFor="password"
     >
       <i
-        class="fas fa-lock"
+        className="fas fa-lock"
       />
     </label>
     <input
