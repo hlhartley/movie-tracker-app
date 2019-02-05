@@ -50,16 +50,24 @@ export class CreateAccount extends Component {
             )
         } else {
             return(
-                <form onSubmit={this.validateInput}>
-                    <label htmlFor='name'>Name</label>
-                    <input name='name' value={this.state.name} id='name' onChange={this.handleChange}/>
-                    <label htmlFor='email'>E-mail</label>
-                    <input name='email' value={this.state.email} id='email' onChange={this.handleChange}/>
-                    <label htmlFor='password'>Password</label>
-                    <input name='password' value={this.state.password} id='password' onChange={this.handleChange}/>
-                    { (errorStatus !== '' && errorStatus !== 'Input not successful') && <p>Email has already been used</p>}
-                    { (errorStatus === 'Input not successful') && <p>All fields must be filled in to create an account</p>}
-                    <button>Create Account</button>
+                <form onSubmit={this.validateInput} className='form-container'>
+                    <p className='main-text'>SIGN UP FOR FREE</p>
+                    <p className='sub-text'>Start tracking your favorite movies today!</p>
+                    <div className='name-container'>
+                        <label htmlFor='name'><i class="fas fa-user"></i></label>
+                        <input name='name' value={this.state.name} id='name' onChange={this.handleChange} placeholder='Full name'/>
+                    </div>    
+                    <div className='email-container'>
+                        <label htmlFor='email'><i class="far fa-envelope"></i></label>
+                        <input name='email' value={this.state.email} id='email' onChange={this.handleChange} placeholder='E-mail address'/>
+                    </div>
+                    <div className='password-container'>   
+                        <label htmlFor='password'><i class="fas fa-lock"></i></label>
+                        <input name='password' value={this.state.password} id='password' onChange={this.handleChange} placeholder='Password (between 5-10 characters)'/>
+                        { (errorStatus !== '' && errorStatus !== 'Input not successful') && <p>Email has already been used</p>}
+                        { (errorStatus === 'Input not successful') && <p>All fields must be filled in to create an account</p>}
+                    </div>    
+                    <button className='create-account-btn'>Create Account</button>
                 </form>
             )
         }
