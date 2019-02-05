@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { showPopup, toggleFavorite, addFavorite, removeFavorite } from '../../actions';
-import { addFavoriteToDB } from '../../helpers/addFavoriteToDB';
-import { removeFavoriteFromDB } from '../../helpers/removeFavoriteFromDB';
+import { addFavoriteToDB, removeFavoriteFromDB } from '../../helpers/requests';
 
 export class MovieCard extends Component {
     constructor() {
