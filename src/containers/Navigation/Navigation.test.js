@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigation, mapStateToProps, mapDispatchToProps } from './Navigation';
 import { shallow } from 'enzyme';
 import { logoutUser, toggleFavorite, resetFavorites } from '../../actions';
+import { mockMovieData } from '../../__fixtures__/mockData';
 
 describe('Navigation', () => {
 
@@ -11,11 +12,36 @@ describe('Navigation', () => {
         const mockToggleFavorite = jest.fn();
         const mockResetFavorites = jest.fn();
         beforeEach(() => {
-            wrapper = shallow(<Navigation loginUser={mockLogoutUser} toggleFavorite={mockToggleFavorite} resetFavorites={mockResetFavorites}/>)
+            wrapper = shallow(<Navigation 
+                logoutUser={mockLogoutUser} 
+                toggleFavorite={mockToggleFavorite} 
+                resetFavorites={mockResetFavorites}
+                favoriteMovies={mockMovieData}
+            />)
         })
 
         it('should match the snapshot', () => {
             expect(wrapper).toMatchSnapshot()
+        })
+
+        it('should toggleFavorite and resetFavorites when handleLogout is called and there are favorite movies', () => {
+            wrapper.setProps({favoriteMovies: []})
+            const toggleFavoriteSpy = jest.spyOn(wrapper.instance().props, 'toggleFavorite')
+            const resetFavoritesSpy = jest.spyOn(wrapper.instance().props, 'resetFavorites')
+            wrapper.instance().handleLogout()
+            expect(toggleFavoriteSpy).toHaveBeenCalledTimes(0)
+            expect(resetFavoritesSpy).toHaveBeenCalledTimes(0)
+
+            wrapper.setProps({favoriteMovies: mockMovieData})
+            wrapper.instance().handleLogout()
+            expect(toggleFavoriteSpy).toHaveBeenCalledTimes(3)
+            expect(resetFavoritesSpy).toHaveBeenCalledTimes(1)
+        })
+
+        it('should handleLogout and call logoutUser', () => {
+            const spy = jest.spyOn(wrapper.instance().props, 'logoutUser')
+            wrapper.instance().handleLogout()
+            expect(spy).toHaveBeenCalled()
         })
     });
 
