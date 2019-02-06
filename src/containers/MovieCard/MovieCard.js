@@ -27,13 +27,13 @@ export class MovieCard extends Component {
     }
 
     render() {
-        let { id, original_title, poster_path, isFavorite } = this.props
+        let { id, title, poster_path, isFavorite } = this.props
         
         return (
                 <div className='movie-card'>
                     <i className={'fas fa-crown favorite-' + isFavorite} onClick={() => this.handleClick()}></i>
                     <Link to={`movies/${id}`}>
-                        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} className='movie-poster' alttext={original_title}/>
+                        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} className='movie-poster' alt={title}/>
                     </Link>
                 </div>
             )   

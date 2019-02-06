@@ -6,6 +6,7 @@ exports[`MovieInfoCard should match the wrapper with all data passed in 1`] = `
 >
   <div>
     <img
+      alt="Robin Hood"
       className="movie-info-poster"
       src="https://image.tmdb.org/t/p/w500//AiRfixFcfTkNbn2A73qVJPlpkUo.jpg"
     />

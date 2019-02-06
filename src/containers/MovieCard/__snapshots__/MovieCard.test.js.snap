@@ -13,7 +13,7 @@ exports[`MovieContain MovieContain component should match the snapshot with all 
     to="movies/297802"
   >
     <img
-      alttext="Aquaman"
+      alt="Aquaman"
       className="movie-poster"
       src="https://image.tmdb.org/t/p/w500/5Kg76ldv7VxeX9YlcQXiowHgdX6.jpg"
     />

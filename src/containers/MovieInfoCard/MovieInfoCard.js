@@ -5,7 +5,7 @@ export const MovieInfoCard = ({ title, id, release_date, poster_path, overview }
   return(
     <div className='movie-info'>
       <div>
-        <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className='movie-info-poster'/>
+        <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className='movie-info-poster' alt={title}/>
       </div>
       <div>
         <h2>{title}</h2>

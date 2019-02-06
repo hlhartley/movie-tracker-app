@@ -31,7 +31,7 @@ export class App extends Component {
           <div className='banner'>
             MOVIE
             <br />TRACKER
-            <img src={require('../../images/bestfilmaward.png')} className='golden-leaves' alttext='golden leaves' />
+            <img src={require('../../images/bestfilmaward.png')} className='golden-leaves' alt='golden leaves' />
           </div>
       </Link>
 
