@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { showPopup, toggleFavorite, addFavorite, removeFavorite } from '../../actions';
 import { addFavoriteToDB, removeFavoriteFromDB } from '../../helpers/requests';
+import PropTypes from 'prop-types';
 
 export class MovieCard extends Component {
     constructor() {
@@ -50,5 +51,17 @@ export const mapDispatchToProps = (dispatch) => ({
     addFavorite: (id) => dispatch(addFavorite(id)),
     removeFavorite: (id) => dispatch(removeFavorite(id))
 });
+
+MovieCard.propTypes = {
+    handleShowPopup: PropTypes.func,
+    toggleFavorite: PropTypes.func,
+    addFavorite: PropTypes.func,
+    removeFavorite: PropTypes.func,
+    id: PropTypes.number, 
+    original_title: PropTypes.string, 
+    poster_path: PropTypes.string, 
+    isFavorite: PropTypes.bool, 
+}
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard)

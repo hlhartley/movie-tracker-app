@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MovieCard from '../MovieCard/MovieCard';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const MoviesContain = (props) => {
     let displayMovies;
@@ -28,5 +29,12 @@ export const mapStateToProps = (state) => ({
     movies: state.movies,
     favoriteMovies: state.favoriteMovies,
 });
+
+
+MoviesContain.propTypes = {
+    movies: PropTypes.array,
+    favoriteMovies: PropTypes.array,
+    showFavs: PropTypes.bool,
+}
 
 export default connect(mapStateToProps)(MoviesContain);

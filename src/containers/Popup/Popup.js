@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { showPopup } from '../../actions';
+import PropTypes from 'prop-types';
 
 export const Popup = (props) => {
 
   return(
     <div className='popup'>
-      <i class="far fa-times-circle" onClick={() => props.showPopup(false)}></i>
+      <i className="far fa-times-circle" onClick={() => props.showPopup(false)}></i>
       
       <div className='popup-message'>
         <p>Create a free account to save your favorite movies</p>
@@ -25,5 +26,9 @@ export const Popup = (props) => {
 export const mapDispatchToProps = (dispatch) => ({
   showPopup: (bool) => dispatch(showPopup(bool))
 });
+
+Popup.propTypes = {
+  showPopup: PropTypes.func,
+}
 
 export default connect(null, mapDispatchToProps)(Popup)

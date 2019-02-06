@@ -11,6 +11,7 @@ import { withRouter } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import { MovieInfoCard } from '../MovieInfoCard/MovieInfoCard';
 import Popup from '../Popup/Popup';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
 
@@ -65,5 +66,12 @@ export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies)),
   updateError: (message) => dispatch(updateError(message)) 
 });
+
+App.propTypes = {
+  movies: PropTypes.array,
+  showPopup: PropTypes.bool,
+  addMovies: PropTypes.func,
+  updateError: PropTypes.func,
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -4,6 +4,7 @@ import { createNewUser } from '../../helpers/requests';
 import { Redirect } from 'react-router-dom';
 import { updateError, loginUser } from '../../actions';
 import { validator } from '../../helpers/validators';
+import PropTypes from 'prop-types';
 
 export class CreateAccount extends Component {
     constructor() {
@@ -83,5 +84,11 @@ export const mapDispatchToProps = (dispatch) => ({
     updateError: (message) => dispatch(updateError(message)),
     loginUser: (id, name) => dispatch(loginUser(id, name))
 });
+
+CreateAccount.propTypes = {
+    errorStatus: PropTypes.string,
+    updateError: PropTypes.func,
+    loginUser: PropTypes.func,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);

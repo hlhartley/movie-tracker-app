@@ -5,7 +5,7 @@ exports[`Popup Popup component should match the snapshot with all data passed in
   className="popup"
 >
   <i
-    class="far fa-times-circle"
+    className="far fa-times-circle"
     onClick={[Function]}
   />
   <div

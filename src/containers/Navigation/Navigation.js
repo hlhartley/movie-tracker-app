@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logoutUser, resetFavorites, toggleFavorite } from '../../actions';
+import PropTypes from 'prop-types';
 
 export class Navigation extends Component {
     constructor() {
@@ -59,6 +60,14 @@ export const mapDispatchToProps = (dispatch) => ({
     toggleFavorite: (id) => dispatch(toggleFavorite(id)),
     resetFavorites: () => dispatch(resetFavorites()) 
 });
+
+
+Navigation.propTypes = {
+    favoriteMovies: PropTypes.array,
+    logoutUser: PropTypes.func,
+    toggleFavorites: PropTypes.func,
+    resetFavorites: PropTypes.func, 
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
 

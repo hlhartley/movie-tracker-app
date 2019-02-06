@@ -3,6 +3,7 @@ import { getUser, getUserFavorites } from '../../helpers/requests';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser, updateError, toggleFavorite, addFavorite } from '../../actions';
+import PropTypes from 'prop-types';
 
 export class Login extends Component {
     constructor() {
@@ -29,7 +30,7 @@ export class Login extends Component {
         } catch(error) {
             this.props.updateError(error.message);
         }
-  
+
     }
 
     handleFavorites = (favorites) => {
@@ -78,5 +79,14 @@ export const mapDispatchToProps = (dispatch) => ({
     toggleFavorite: (id) => dispatch(toggleFavorite(id)),
     addFavorite: (id) => dispatch(addFavorite(id))
 });
+
+Login.propTypes = {
+    errorStatus: PropTypes.string,
+    updateError: PropTypes.func,
+    loginUser: PropTypes.func,
+    toggleFavorite: PropTypes.func,
+    addFavorite: PropTypes.func,
+}
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
