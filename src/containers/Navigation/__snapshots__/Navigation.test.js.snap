@@ -12,7 +12,7 @@ exports[`Navigation Navigation component should match the snapshot 1`] = `
       to="/"
     >
       <i
-        class="fas fa-home"
+        className="fas fa-home"
       />
        Home 
     </NavLink>

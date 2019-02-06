@@ -25,7 +25,7 @@ export class Navigation extends Component {
             return( 
             <nav className='user-nav'>
                 <div className='left-side-nav'>
-                    <NavLink to='/' className='nav'><i class="fas fa-home"></i> Home </NavLink>
+                    <NavLink to='/' className='nav'><i className="fas fa-home"></i> Home </NavLink>
                     <NavLink to='/favorites' className='nav'><i className='fas fa-crown'></i> Favorites </NavLink>
                 </div>
                 <div>
@@ -37,7 +37,7 @@ export class Navigation extends Component {
             return(
                 <nav className='guest-nav'>
                     <div>
-                        <NavLink to='/' className='nav'><i class="fas fa-home"></i> Home </NavLink>
+                        <NavLink to='/' className='nav'><i className="fas fa-home"></i> Home </NavLink>
                     </div>
                     <div>
                         <NavLink to='/login' className='nav'>Login</NavLink> 
