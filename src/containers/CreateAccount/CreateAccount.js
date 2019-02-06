@@ -64,7 +64,7 @@ export class CreateAccount extends Component {
                     </div>
                     <div className='password-container'>   
                         <label htmlFor='password'><i className="fas fa-lock"></i></label>
-                        <input name='password' value={this.state.password} id='password' onChange={this.handleChange} placeholder='Password (between 5-10 characters)'/>
+                        <input type='password' name='password' value={this.state.password} id='password' onChange={this.handleChange} placeholder='Password (between 5-10 characters)'/>
                     </div>    
                         { (errorStatus !== '' && errorStatus !== 'Input not successful') && <p>Email has already been used</p>}
                         { (errorStatus === 'Input not successful') && <p>All fields must be filled in to create an account</p>}

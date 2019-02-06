@@ -58,7 +58,7 @@ export class Login extends Component {
                     </div>
                     <div className='password-container'>
                         <label htmlFor='password'><i className="fas fa-lock"></i></label>
-                        <input name='password' value={this.state.password} id='password' onChange={this.handleChange} placeholder='Password'/>
+                        <input type='password' name='password' value={this.state.password} id='password' onChange={this.handleChange} placeholder='Password'/>
                     </div>
                     { (errorStatus !== '') && <p>Email and Password do not match</p> }
                     <button className='login-btn'>LOGIN</button>
