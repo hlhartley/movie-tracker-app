@@ -8,7 +8,7 @@ Run `npm install` from the root directory
 Run `npm start` and visit localhost:3000 in your browser  
 
 ### Preview:
-![](movietracker-preview-sm.gif)
+![](movie-tracker-preview-sm.gif)
 
 ### Primary Technologies Used:
 * React
