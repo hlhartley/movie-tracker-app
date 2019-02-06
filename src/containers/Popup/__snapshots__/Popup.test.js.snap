@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popup Popup component should match the snapshot with all data passed in 1`] = `
+<div
+  className="popup"
+>
+  <i
+    class="far fa-times-circle"
+    onClick={[Function]}
+  />
+  <div
+    className="popup-message"
+  >
+    <p>
+      Create a free account to save your favorite movies
+    </p>
+    <Link
+      replace={false}
+      to="/create-account"
+    >
+      <button
+        className="create-account-btn"
+        onClick={[Function]}
+      >
+        Create Account
+      </button>
+    </Link>
+    <Link
+      replace={false}
+      to="/login"
+    >
+      <button
+        className="login-btn"
+        onClick={[Function]}
+      >
+        Already a user? Login
+      </button>
+    </Link>
+  </div>
+</div>
+`;
