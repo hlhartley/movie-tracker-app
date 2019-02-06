@@ -6,7 +6,7 @@ exports[`Login Login component should match the snapshot 1`] = `
   onSubmit={[Function]}
 >
   <i
-    class="fas fa-user-circle"
+    className="fas fa-user-circle"
   />
   <div
     className="email-container"
@@ -15,7 +15,7 @@ exports[`Login Login component should match the snapshot 1`] = `
       htmlFor="email"
     >
       <i
-        class="far fa-envelope"
+        className="far fa-envelope"
       />
     </label>
     <input
@@ -33,7 +33,7 @@ exports[`Login Login component should match the snapshot 1`] = `
       htmlFor="password"
     >
       <i
-        class="fas fa-lock"
+        className="fas fa-lock"
       />
     </label>
     <input

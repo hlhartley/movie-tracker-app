@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieInfoCard should match the wrapper with all data passed in 1`] = `
+<div
+  className="movie-info"
+>
+  <div>
+    <img
+      className="movie-info-poster"
+      src="https://image.tmdb.org/t/p/w500//AiRfixFcfTkNbn2A73qVJPlpkUo.jpg"
+    />
+  </div>
+  <div>
+    <h2>
+      Robin Hood
+    </h2>
+    <p
+      className="released-text"
+    >
+      Released: 
+      2018-11-20
+    </p>
+    <p>
+      A war-hardened Crusader and his Moorish commander mount an audacious revolt against the corrupt English crown.
+    </p>
+  </div>
+</div>
+`;
