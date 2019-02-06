@@ -41,6 +41,7 @@ exports[`Login Login component should match the snapshot 1`] = `
       name="password"
       onChange={[Function]}
       placeholder="Password"
+      type="password"
       value=""
     />
   </div>

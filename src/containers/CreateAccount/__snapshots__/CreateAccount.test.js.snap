@@ -66,6 +66,7 @@ exports[`CreateAccount CreateAccount component should match the snapshot 1`] = `
       name="password"
       onChange={[Function]}
       placeholder="Password (between 5-10 characters)"
+      type="password"
       value=""
     />
   </div>
