@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviesContain MoviesContain component should match the snapshot showing all of the movies passed in when showFavs is false 1`] = `
+<div
+  className="movies-contain"
+>
+  <Connect(MovieCard)
+    adult={false}
+    backdrop_path="/5A2bMlLfJrAfX9bqAibOL2gCruF.jpg"
+    id={297802}
+    isFavorite={false}
+    key="297802"
+    original_language="en"
+    original_title="Aquaman"
+    overview="Once home to the most advanced civilization on Earth, the city of Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people -- and then the surface world. Standing in his way is Aquaman, Orm's half-human, half-Atlantean brother and true heir to the throne. With help from royal counselor Vulko, Aquaman must retrieve the legendary Trident of Atlan and embrace his destiny as protector of the deep."
+    popularity={483.065}
+    poster_path="/5Kg76ldv7VxeX9YlcQXiowHgdX6.jpg"
+    release_date="2018-12-07"
+    title="Aquaman"
+    video={false}
+    vote_average={6.9}
+    vote_count={3119}
+  />
+  <Connect(MovieCard)
+    adult={false}
+    backdrop_path="/hMANgfPHR1tRObNp2oPiOi9mMlz.jpg"
+    id={424783}
+    isFavorite={false}
+    key="424783"
+    original_language="en"
+    original_title="Bumblebee"
+    overview="On the run in the year 1987, Bumblebee finds refuge in a junkyard in a small Californian beach town. Charlie, on the cusp of turning 18 and trying to find her place in the world, discovers Bumblebee, battle-scarred and broken. When Charlie revives him, she quickly learns this is no ordinary yellow VW bug."
+    popularity={263.575}
+    poster_path="/fw02ONlDhrYjTSZV8XO6hhU3ds3.jpg"
+    release_date="2018-12-15"
+    title="Bumblebee"
+    video={false}
+    vote_average={6.5}
+    vote_count={1020}
+  />
+  <Connect(MovieCard)
+    adult={false}
+    backdrop_path="/8yqLPNwNCtpOPc3XkOlkSMnghzw.jpg"
+    id={480530}
+    isFavorite={false}
+    key="480530"
+    original_language="en"
+    original_title="Creed II"
+    overview="Follows Adonis Creed's life inside and outside of the ring as he deals with new found fame, issues with his family, and his continuing quest to become a champion."
+    popularity={191.233}
+    poster_path="/v3QyboWRoA4O9RbcsqH8tJMe8EB.jpg"
+    release_date="2018-11-21"
+    title="Creed II"
+    video={false}
+    vote_average={6.6}
+    vote_count={829}
+  />
+</div>
+`;
+
+exports[`MoviesContain MoviesContain component should match the snapshot showing only the favorite movies when showFavs is true 1`] = `
+<div
+  className="movies-contain"
+>
+  <Connect(MovieCard)
+    adult={false}
+    backdrop_path="/8yqLPNwNCtpOPc3XkOlkSMnghzw.jpg"
+    id={480530}
+    isFavorite={true}
+    key="480530"
+    original_language="en"
+    original_title="Creed II"
+    overview="Follows Adonis Creed's life inside and outside of the ring as he deals with new found fame, issues with his family, and his continuing quest to become a champion."
+    popularity={191.233}
+    poster_path="/v3QyboWRoA4O9RbcsqH8tJMe8EB.jpg"
+    release_date="2018-11-21"
+    title="Creed II"
+    video={false}
+    vote_average={6.6}
+    vote_count={829}
+  />
+  <Connect(MovieCard)
+    adult={false}
+    backdrop_path="/5A2bMlLfJrAfX9bqAibOL2gCruF.jpg"
+    id={297802}
+    isFavorite={true}
+    key="297802"
+    original_language="en"
+    original_title="Aquaman"
+    overview="Once home to the most advanced civilization on Earth, the city of Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people -- and then the surface world. Standing in his way is Aquaman, Orm's half-human, half-Atlantean brother and true heir to the throne. With help from royal counselor Vulko, Aquaman must retrieve the legendary Trident of Atlan and embrace his destiny as protector of the deep."
+    popularity={483.065}
+    poster_path="/5Kg76ldv7VxeX9YlcQXiowHgdX6.jpg"
+    release_date="2018-12-07"
+    title="Aquaman"
+    video={false}
+    vote_average={6.9}
+    vote_count={3119}
+  />
+</div>
+`;
