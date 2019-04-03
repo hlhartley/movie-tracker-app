@@ -4,7 +4,8 @@ The goal of this project was to create an application where a user can sign in/o
 
 ### Set-Up:
 **Back end**  
-Clone the associated [back-end repo](https://github.com/turingschool-examples/movie-tracker)  
+Clone the associated [back-end repo](https://github.com/turingschool-examples/movie-tracker)
+You will need to have Postgresql installed. If you do not have it, you can follow these [instructions](https://github.com/turingschool-examples/movie-tracker#setup-postgresql).  
 Run `npm install` from the root directory  
 Run `npm start` and visit localhost:3000/api/users in your browser 
 
